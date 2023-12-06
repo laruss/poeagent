@@ -6,14 +6,12 @@ from js2py import eval_js
 from requests import get
 
 from .requests_params import RequestsParams, ParamsData
-from .utils import get_resource
+from .tag_id import tag_js_script
 
 logger = logging.getLogger(__name__)
 
 
 class JS:
-    js_file = "tag_id.js"
-    tag_js_script = get_resource(js_file)
     tag_js_script_function_name = "mySuper.puper"
 
     form_key_pattern = r"window\.([a-zA-Z0-9]+)=function\(\)\{return window"
@@ -99,7 +97,7 @@ class JS:
 
     def get_tag_id(self, form_key: str, data: str) -> str:
         script = self._window
-        script += self.tag_js_script + f"window.{self._tag_id_method_name}" + \
+        script += tag_js_script + f"window.{self._tag_id_method_name}" + \
             f"({self.tag_js_script_function_name}, '{form_key}', '{data}');"
 
         return str(eval_js(script))
