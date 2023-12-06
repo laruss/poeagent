@@ -1,1 +1,1 @@
-from agent import PoeAgent
+from .agent import PoeAgent
