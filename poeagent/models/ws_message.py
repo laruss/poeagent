@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-from .send_message_data import MessageData
+from .send_message_data import MessageData, Chat
 
 
 class WsMessage(BaseModel):
@@ -25,3 +25,4 @@ class WsMessage(BaseModel):
     field__isNode: str = Field(..., alias='__isNode')
     textLengthOnCancellation: None
     humanMessage: Optional[MessageData] = None
+    chat: Optional[Chat] = None

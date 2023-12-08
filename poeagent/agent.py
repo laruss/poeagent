@@ -600,7 +600,7 @@ class PoeAgent:
         """
         generator for messages
         will yield WsMessage objects until a bot message is complete
-        in the end will add humanMessage field to WsMessage object if edge_create is provided
+        in the end will add [humanMessage, chat] fields to WsMessage object if edge_create is provided
         to get the generated message text, you can use ws_model.text
 
         :param last_message: LastMessage object
@@ -629,6 +629,7 @@ class PoeAgent:
 
             if ws_model.state == 'complete' and edge_create:
                 ws_model.humanMessage = edge_create.message.node
+                ws_model.chat = edge_create.chat
 
             yield ws_model
 
@@ -639,7 +640,7 @@ class PoeAgent:
         """
         send a message to the bot
         will return generator until a bot message is complete
-        in the end will add humanMessage field to WsMessage object
+        in the end will add [humanMessage, chat] fields to WsMessage object
         to get the generated message text, you can use ws_model.text
 
         :param bot_name: bot name (handle) to send a message to, string
