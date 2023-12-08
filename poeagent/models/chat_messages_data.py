@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional, Union, Any
 
 from pydantic import BaseModel, Field
 
@@ -93,15 +93,15 @@ class MessageData(BaseModel):
     creationTime: int
     contentType: str
     attachmentTruncationState: str
-    vote: None
+    vote: Any = None
     suggestedReplies: List
     field__isNode: str = Field(..., alias='__isNode')
-    field__typename: str = Field(..., alias='__typename')
+    field__typename: Optional[str] = Field(None, alias='__typename')
     id: str
-    textLengthOnCancellation: None
+    textLengthOnCancellation: Union[None, int, str] = None
     sourceType: str
     attachments: List
-    clientNonce: None
+    clientNonce: Optional[str] = None
     hasCitations: bool
 
 

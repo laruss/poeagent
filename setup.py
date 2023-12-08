@@ -6,7 +6,7 @@ long_description = (this_directory / "readme.md").read_text()
 
 setup(
     name="poeagent",
-    version="0.1.0",
+    version="0.1.1",
     description="Python wrapper for Path of Exile API",
     long_description=long_description,
     long_description_content_type='text/markdown',

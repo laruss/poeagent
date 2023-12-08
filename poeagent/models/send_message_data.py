@@ -4,24 +4,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-
-class MessageData(BaseModel):
-    messageId: int
-    creationTime: int
-    id: str
-    text: str
-    author: str
-    state: str
-    contentType: str
-    sourceType: str
-    attachmentTruncationState: str
-    attachments: List
-    vote: None
-    suggestedReplies: List
-    clientNonce: str
-    hasCitations: bool
-    field__isNode: str = Field(..., alias='__isNode')
-    textLengthOnCancellation: None
+from .chat_messages_data import MessageData
 
 
 class Message(BaseModel):
